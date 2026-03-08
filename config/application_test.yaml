@@ -1,0 +1,14 @@
+# kafka configuration
+kafka:
+  brokers:
+    - "localhost:57351"
+    - "localhost:57352"
+
+# datasource configuration
+datasource:
+  default:
+    driver: sqlite3
+    url: "file::memory:?cache=shared"
+  slave:
+    driver: mysql
+    url: "192.168"
