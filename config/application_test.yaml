@@ -10,6 +10,12 @@ datasource:
   default:
     driver: sqlite3
     url: "file::memory:?cache=shared"
+    max_idle: 10
+    max_open: 100
+    max_lifetime: 5 # minute
   slave:
     driver: sqlite3
     url: "file::memory:?cache=shared"
+    max_idle: 10
+    max_open: 100
+    max_lifetime: 5 # minute
