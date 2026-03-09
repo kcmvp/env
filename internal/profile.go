@@ -1,4 +1,4 @@
-package env
+package internal
 
 import (
 	"errors"
@@ -14,16 +14,20 @@ import (
 )
 
 const (
-	envProfile  = "profile"
-	testProfile = "test"
-	cfgName     = "application"
-	testCfgName = "application_test"
+	ProfileEnvName   = "profile"
+	TestProfileValue = "test"
+	CfgName          = "application"
+	TestCfgName      = "application_test"
 )
 
 var (
 	_cfg *viper.Viper
 	once sync.Once
 )
+
+func MstProfile() *viper.Viper {
+	return Profile().MustGet()
+}
 
 // Profile loads the application configuration.
 //
@@ -52,9 +56,9 @@ func loadViper(required bool) (*viper.Viper, error) {
 	// - dev time: running from repo root, package dirs, or IDE
 	// - runtime: running from an app's working directory
 	addDefaultConfigPaths(v)
-	name := cfgName
-	if os.Getenv(envProfile) == testProfile {
-		name = testCfgName
+	name := CfgName
+	if os.Getenv(ProfileEnvName) == TestProfileValue {
+		name = TestCfgName
 	}
 	v.SetConfigName(strings.TrimSuffix(name, filepath.Ext(name)))
 	// previous test-specific explicit checks removed

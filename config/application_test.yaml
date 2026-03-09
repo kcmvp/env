@@ -4,11 +4,12 @@ kafka:
     - "localhost:57351"
     - "localhost:57352"
 
-# datasource configuration
+# datasource configuration, support multiple datasource
+# the first one must be 'default'
 datasource:
   default:
     driver: sqlite3
     url: "file::memory:?cache=shared"
   slave:
-    driver: mysql
-    url: "192.168"
+    driver: sqlite3
+    url: "file::memory:?cache=shared"
