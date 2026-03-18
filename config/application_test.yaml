@@ -1,8 +1,14 @@
 # kafka configuration
 kafka:
+  accessKey: "AKIAWCJVZM2L5SRSD5"
+  secretKey: "CQYaR5chURwoEklY5Sxz3TYWzu9p"
   brokers:
     - "localhost:57351"
     - "localhost:57352"
+  topics:
+    - "test-topic"
+    - "test-topic-2"
+  group_id: "test-group"
 
 # datasource configuration, support multiple datasource
 # the first one must be 'default'
